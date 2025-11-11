@@ -1,0 +1,6 @@
+pip install camb
+import numpy as np
+from camb import model, initialpower
+from astropy.table import Table
+from matplotlib import pyplot as pylt
+from matplotlib import rc
