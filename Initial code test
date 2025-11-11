@@ -20,3 +20,6 @@ for H0_plot in H0_set:
   continue
  else:
   plt.plot(ells, cl_tt, label= f'$H_0 = {H0_plot:.1f}$')
+
+planck = Table.read('COM_PowerSpect_CMB_R2.02.fits', hdu=7)
+planck_lowell = Table.read('COM_PowerSpect_CMB_R2.02.fits', hdu=1)
