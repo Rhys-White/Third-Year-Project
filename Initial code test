@@ -34,3 +34,24 @@ plt.ylabel('$\mathcal{D}_1$')
 plt.xlim([2,6000])
 plt.ylim([1.e1, 1.e4])
 plt.savefig('./cmb_example_plot.png', dpi=300, bbox_inches='tight')
+
+plt.errorbar(planck['ELL'], planck['D_ELL'], yerr=planck['ERR'], fmt='o', markersize=2, capsize=3, color='k', label='\emph{Planck} 2018 Data')
+plt.errorbar(planck_lowell['ELL'], planck_lowell['D_ELL'], yerr=[planck_lowell['ERRDOWN'], planck_lowell['errup']], fmt='o', markersize=2, capsize=3, label=none, color='k')
+
+plt.legend(fontsize='small')
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel('$1$')
+plt.ylabel('$\mathcal{D}_1$')
+plt.xlim([2,6000])
+plt.ylim([1.e1, 1.e4])
+
+fsky= 0.4
+mask= np.logical_and(ells >= 40, ells <=6000)
+TT_ells, TT_Nell= np.loadtxt("S0_LAT_Nell_T_atmv1_baseline_fsky0p4_ILC_CMB.txt", usecols=(0,1), unpack= True)
+TT_Nell = TT_Nell[np.logical_and(ells >= 40, ells <=6000) / (2.7255e6 ** 2)
+nltt= np.sqrt(2*(cl_tt[mask]+ TT_Nell)**2 / (fsky*(2*ells[mask]+1)))
+
+plt.errorbar(TT_ells[np.logical_and(TT_ells >= 40, TT_ells <= 6000)], cl_tt[mask], yerr=nltt, fmt='o', markersize=2, capsize=3, color='r', label='baseline', zoreder=-1000)
+plt.legend(fontsize='small')
+plt.savefig('./cmb_planck_s0.png', dpi=300, bbox_inches='tight')
