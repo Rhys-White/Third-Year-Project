@@ -23,3 +23,14 @@ for H0_plot in H0_set:
 
 planck = Table.read('COM_PowerSpect_CMB_R2.02.fits', hdu=7)
 planck_lowell = Table.read('COM_PowerSpect_CMB_R2.02.fits', hdu=1)
+plt.errorbar(planck['ELL'], planck['D_ELL'], yerr=planck['ERR'], fmt='o', markersize=2, capsize=3, color='k', label='\emph{Planck} 2018 Data')
+plt.errorbar(planck_lowell['ELL'], planck_lowell['D_ELL'], yerr=[planck_lowell['ERRDOWN'], planck_lowell['errup']], fmt='o', markersize=2, capsize=3, label=none, color='k')
+
+plt.legend(fontsize='small')
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel('$1$')
+plt.ylabel('$\mathcal{D}_1$')
+plt.xlim([2,6000])
+plt.ylim([1.e1, 1.e4])
+plt.savefig('./cmb_example_plot.png', dpi=300, bbox_inches='tight')
