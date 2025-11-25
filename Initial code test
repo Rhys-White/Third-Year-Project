@@ -1,4 +1,5 @@
-pip install camb
+!pip install camb
+import camb
 import numpy as np
 from camb import model, initialpower
 from astropy.table import Table
@@ -14,7 +15,7 @@ for H0_plot in H0_set:
  results = camb.get_results(pars)
  powers = results.get_cmb_power_spectra(pars, CMB_unit='muK')
  all_cls = powers['total']
- ells = np.arrange(all_cls.shape[0])
+ ells = np.arange(all_cls.shape[0])
  cl_tt = all_cls[:,0]
  if H0_plot == 67.:
   continue
